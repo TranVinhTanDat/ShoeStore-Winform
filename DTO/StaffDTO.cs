@@ -23,13 +23,21 @@ namespace DTO
             _idStaff = dr["StaffID"].ToString();
             _firstName = dr["FirstName"].ToString();
             _lastName = dr["LastName"].ToString();
-            _year = int.Parse(dr["YearOfBirth"].ToString());
+
+            // Handle possible DBNull for YearOfBirth
+            _year = dr.IsNull("YearOfBirth") ? 0 : int.Parse(dr["YearOfBirth"].ToString());
+
             _gender = dr["Gender"].ToString();
             _phone = dr["Phone"].ToString();
             _address = dr["Address"].ToString();
-            _salary = double.Parse(dr["Salary"].ToString());
-            _image = (byte[])dr["IMG"];
+
+            // Handle possible DBNull for Salary
+            _salary = dr.IsNull("Salary") ? 0.0 : double.Parse(dr["Salary"].ToString());
+
+            // Handle possible DBNull for Image
+            _image = dr.IsNull("IMG") ? null : (byte[])dr["IMG"];
         }
+
 
         public StaffDTO(string idStaff, string firstName, string lastName, int year, string gender, string phone, string address, double salary, byte[] image)
         {

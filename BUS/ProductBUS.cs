@@ -81,5 +81,15 @@ namespace BUS
             return Id;
         }
 
+        public bool UpdateQuantity(string productId, int quantity)
+        {
+            // Delegate the call to the DAO layer
+            return this.productDAO.UpdateQuantity(productId, quantity);
+        }
+        public bool UpdateQuantityBuy(string productId, int quantity)
+        {
+            // Delegate the call to the DAO layer
+            return this.productDAO.UpdateQuantityBuy(productId, quantity);
+        }
     }
 }

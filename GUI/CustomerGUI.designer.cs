@@ -304,7 +304,7 @@
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Panel1.BorderRadius = 20;
-            this.guna2Panel1.FillColor = System.Drawing.Color.Aqua;
+            this.guna2Panel1.FillColor = System.Drawing.Color.DarkOrange;
             this.guna2Panel1.Location = new System.Drawing.Point(12, 12);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(1254, 24);
@@ -359,7 +359,7 @@
             this.txtAddress_item.ForeColor = System.Drawing.Color.Black;
             this.txtAddress_item.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtAddress_item.Location = new System.Drawing.Point(239, 412);
-            this.txtAddress_item.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAddress_item.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddress_item.Name = "txtAddress_item";
             this.txtAddress_item.PasswordChar = '\0';
             this.txtAddress_item.PlaceholderText = "";
@@ -382,7 +382,7 @@
             this.txtPhone_item.ForeColor = System.Drawing.Color.Black;
             this.txtPhone_item.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPhone_item.Location = new System.Drawing.Point(239, 346);
-            this.txtPhone_item.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPhone_item.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhone_item.Name = "txtPhone_item";
             this.txtPhone_item.PasswordChar = '\0';
             this.txtPhone_item.PlaceholderText = "";
@@ -405,7 +405,7 @@
             this.txtName_item.ForeColor = System.Drawing.Color.Black;
             this.txtName_item.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtName_item.Location = new System.Drawing.Point(239, 199);
-            this.txtName_item.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtName_item.Margin = new System.Windows.Forms.Padding(4);
             this.txtName_item.Name = "txtName_item";
             this.txtName_item.PasswordChar = '\0';
             this.txtName_item.PlaceholderText = "";
@@ -429,7 +429,7 @@
             this.txtSurname_item.ForeColor = System.Drawing.Color.Black;
             this.txtSurname_item.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSurname_item.Location = new System.Drawing.Point(239, 142);
-            this.txtSurname_item.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSurname_item.Margin = new System.Windows.Forms.Padding(4);
             this.txtSurname_item.Name = "txtSurname_item";
             this.txtSurname_item.PasswordChar = '\0';
             this.txtSurname_item.PlaceholderText = "";
@@ -452,7 +452,7 @@
             this.txtID_item.ForeColor = System.Drawing.Color.Black;
             this.txtID_item.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtID_item.Location = new System.Drawing.Point(239, 86);
-            this.txtID_item.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtID_item.Margin = new System.Windows.Forms.Padding(4);
             this.txtID_item.Name = "txtID_item";
             this.txtID_item.PasswordChar = '\0';
             this.txtID_item.PlaceholderText = "";
@@ -477,7 +477,7 @@
             this.txtSeach_item.IconRight = ((System.Drawing.Image)(resources.GetObject("txtSeach_item.IconRight")));
             this.txtSeach_item.IconRightSize = new System.Drawing.Size(26, 26);
             this.txtSeach_item.Location = new System.Drawing.Point(15, 142);
-            this.txtSeach_item.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSeach_item.Margin = new System.Windows.Forms.Padding(4);
             this.txtSeach_item.Name = "txtSeach_item";
             this.txtSeach_item.PasswordChar = '\0';
             this.txtSeach_item.PlaceholderText = "";

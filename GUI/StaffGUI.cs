@@ -35,6 +35,7 @@ namespace GUI
         {
             listStaff = staffBUS.GetList();
             dtgv.DataSource = listStaff;
+            dtgv.DataError += dtgv_DataError;
         }
 
         public void ChangeHeader()
@@ -92,7 +93,8 @@ namespace GUI
             dtgv.Columns[1].Width = 200; // fn
             dtgv.Columns[2].Width = 100; // ln
             dtgv.Columns[3].Width = 100; // phone
-            dtgv.Columns[4].Width = 100;
+            dtgv.Columns[4].Width = 250; 
+
             dtgv.Columns[5].Width = 100; // phone
             dtgv.Columns[6].Width = 350; // address
             dtgv.Columns[7].Width = 100;
@@ -148,6 +150,20 @@ namespace GUI
                     // Cell 1 is ID columns
 
                 }
+            }
+        }
+        private void dtgv_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            
+            if (dtgv.Columns[e.ColumnIndex] is DataGridViewImageColumn &&
+                e.Context == DataGridViewDataErrorContexts.Formatting)
+            {
+                
+                dtgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = Properties.Resources.about_black_n6; 
+                e.Cancel = true;
+            }
+            else
+            {
             }
         }
 

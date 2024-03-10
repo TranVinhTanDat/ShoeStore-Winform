@@ -34,107 +34,26 @@ namespace BUS
         }
         public string AddSup(string id, string name, string phone, string address, string fax)
         {
-            Regex rexNumber = new Regex(@"^[0-9]{10}$");
-            if (id == "")
+            if (!checkIdSuppier(id))
             {
-                return "error_SupId_isNull";
+                SupplierDTO sup = new SupplierDTO(id, name, phone, address, fax);
+                supDAO.AppSup(sup);
+                return "success";
             }
-            if (id.Contains("SUPP") == false)
-            {
-                return "saidinhdang";
-            }
-
-
-            if (name == "")
-            {
-                return "error_Supname";
-            }
-            if (phone == "")
-            {
-                return "error_Phonenull";
-            }
-            if (fax == "")
-            {
-                return "error_Faxnull";
-            }
-
-            string result = "";
-            if (checkIdSuppier(id) == true)
-            {
-                result = "error_SupId";
-            }
-            if (address == "")
-            {
-                result = "error_Address";
-            }
-
-
-            if (rexNumber.Match(phone).Success == false)
-                result = "error_phone";
-            if (rexNumber.Match(fax).Success == false)
-                result = "error_fax";
-
-
-            if (result.Contains("error"))
-                return result;
-            result = "success";
-
-            SupplierDTO sup = new SupplierDTO(id, name, phone, address, fax);
-            supDAO.AppSup(sup);
-            return result;
+            return "duplicate_id"; // Trả về thông báo nếu ID đã tồn tại
         }
 
         public string UpdateSup(string id, string name, string phone, string address, string fax)
         {
-            Regex rexNumber = new Regex(@"^[0-9]{10}$");
-            if (id == "")
+            if (checkIdSuppier(id))
             {
-                return "error_SupId_isNull";
+                SupplierDTO sup = new SupplierDTO(id, name, phone, address, fax);
+                supDAO.UpdateSup(sup);
+                return "success";
             }
-            if (id.Contains("SUPP") == false)
-            {
-                return "saidinhdang";
-            }
-
-
-            if (name == "")
-            {
-                return "error_Supname";
-            }
-            if (phone == "")
-            {
-                return "error_Phonenull";
-            }
-            if (fax == "")
-            {
-                return "error_Faxnull";
-            }
-
-            string result = "";
-            if (checkIdSuppier(id) == false)
-            {
-                result = "error_SupId";
-            }
-            if (address == "")
-            {
-                result = "error_Address";
-            }
-
-
-            if (rexNumber.Match(phone).Success == false)
-                result = "error_phone";
-            if (rexNumber.Match(fax).Success == false)
-                result = "error_fax";
-
-
-            if (result.Contains("error"))
-                return result;
-            result = "success";
-
-            SupplierDTO sup = new SupplierDTO(id, name, phone, address, fax);
-            supDAO.UpdateSup(sup);
-            return result;
+            return "not_found"; // Trả về thông báo nếu không tìm thấy ID cần cập nhật
         }
+
         public bool checkIdSuppier(string id)
         {
             foreach (SupplierDTO sup in ShowSup())
@@ -144,5 +63,6 @@ namespace BUS
             }
             return false;
         }
+
     }
 }

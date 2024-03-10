@@ -111,10 +111,17 @@ namespace GUI
 
         private void BtnAdd_item_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtID_item.Text) || string.IsNullOrWhiteSpace(txtName_item.Text) ||
+        string.IsNullOrWhiteSpace(txtPhone_item.Text) || string.IsNullOrWhiteSpace(txtAddress_item.Text) ||
+        string.IsNullOrWhiteSpace(txtFax_item.Text))
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             SupplierDTO sup = new SupplierDTO();
 
             sup.SuppierID1 = txtID_item.Text;
-
             sup.Suppiername1 = txtName_item.Text;
             sup.PhoneNumber1 = txtPhone_item.Text;
             sup.Address1 = txtAddress_item.Text;
@@ -122,40 +129,32 @@ namespace GUI
 
             SupplierBUS supbus = new SupplierBUS();
             string kq = supbus.AddSup(sup.SuppierID1, sup.Suppiername1, sup.PhoneNumber1, sup.Address1, sup.FaxNumber1);
+
             if (kq == "success")
             {
                 ShowListSUP();
-                MessageBox.Show("Add thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Clear();
             }
-            if (kq == "saidinhdang")
+            else if (kq == "duplicate_id")
             {
-                MessageBox.Show("Sai định dạng mã", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (kq == "error_SupId_isNull" || kq == "error_Supname" || kq == "error_Phonenull" || kq == "error_Faxnull" || kq == "error_Address")
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (kq == "error_phone")
-            {
-                MessageBox.Show("Sai định dạng số điện thoại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (kq == "error_fax")
-            {
-                MessageBox.Show("Sai định dạng số Fax", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (kq == "error_SupId")
-            {
-                MessageBox.Show("ID đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("ID đã tồn tại. Vui lòng chọn ID khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void BtnUpd_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtID_item.Text) || string.IsNullOrWhiteSpace(txtName_item.Text) ||
+            string.IsNullOrWhiteSpace(txtPhone_item.Text) || string.IsNullOrWhiteSpace(txtAddress_item.Text) ||
+            string.IsNullOrWhiteSpace(txtFax_item.Text))
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             SupplierDTO sup = new SupplierDTO();
 
             sup.SuppierID1 = txtID_item.Text;
-
             sup.Suppiername1 = txtName_item.Text;
             sup.PhoneNumber1 = txtPhone_item.Text;
             sup.Address1 = txtAddress_item.Text;
@@ -163,31 +162,16 @@ namespace GUI
 
             SupplierBUS supbus = new SupplierBUS();
             string kq = supbus.UpdateSup(sup.SuppierID1, sup.Suppiername1, sup.PhoneNumber1, sup.Address1, sup.FaxNumber1);
+
             if (kq == "success")
             {
                 ShowListSUP();
-                MessageBox.Show("Add thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Clear();
             }
-            if (kq == "saidinhdang")
+            else if (kq == "not_found")
             {
-                MessageBox.Show("Sai định dạng mã", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (kq == "error_SupId_isNull" || kq == "error_Supname" || kq == "error_Phonenull" || kq == "error_Faxnull" || kq == "error_Address")
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (kq == "error_phone")
-            {
-                MessageBox.Show("Sai định dạng số điện thoại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (kq == "error_fax")
-            {
-                MessageBox.Show("Sai định dạng số Fax", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (kq == "error_SupId")
-            {
-                MessageBox.Show("ID không tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Không tìm thấy ID cần cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

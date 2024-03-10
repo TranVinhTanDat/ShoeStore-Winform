@@ -268,7 +268,8 @@ namespace GUI
                     RoleDetailDAO.Instance.InsertRoleDetail(roleID, function[i].FunctionID.ToString());
                 }
             }
-            messInformation.Show("Update Successful");
+            string message = "Update Successful";
+            MessageBox.Show(message, "Information", MessageBoxButtons.OK);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

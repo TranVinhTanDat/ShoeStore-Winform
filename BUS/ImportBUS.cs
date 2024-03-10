@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAO;
 using DTO;
+using Microsoft.SqlServer.Management.Sdk.Sfc;
 
 namespace BUS
 {
@@ -25,6 +26,8 @@ namespace BUS
             importDAO = new ImportDAO();
         }
 
+
+
         public List<ImportDTO> GetList()
         {
             listImportDTO = new List<ImportDTO>();
@@ -35,10 +38,16 @@ namespace BUS
         {
             return this.importDAO.Update(importID, supplierID, staffID, updateTime, total);
         }
-        public DataTable Insert(string importID, string supplierID, string staffID, double total)
+        public bool Insert(string importID, string supplierID, string staffID, double total)
         {
             return this.importDAO.Insert(importID, supplierID, staffID, total);
         }
+        public bool CheckStaffExistence(string staffID)
+        {
+            // Gọi đến phương thức từ DAO để kiểm tra sự tồn tại của StaffID trong bảng staff
+            return importDAO.CheckStaffExistence(staffID);
+        }
+
         public DataTable Delete(string importID)
         {
             return this.importDAO.Delete(importID);
@@ -51,6 +60,9 @@ namespace BUS
         {
             return importDAO.FindImport(importID);
         }
+        // Trong class ImportBUS
+       
+
         public string getIDImport()
         {
             string Id = "";

@@ -1,10 +1,14 @@
 ﻿using BUS;
 using DAO;
+using DTO;
 using GUI.Properties;
 using System;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 
 namespace GUI
@@ -68,10 +72,10 @@ namespace GUI
 
         public void LoadComboBoxRole()
         {
-            //cmbRole.DataSource = RoleBUS.Instance.GetList();
-            //cmbRole.DisplayMember = "RoleName";
-            //cmbRole.ValueMember = "RoleID";
-            //cmbRole.SelectedItem = null;
+            cmbRole.DataSource = RoleBUS.Instance.GetList();
+            cmbRole.DisplayMember = "RoleName";
+            cmbRole.ValueMember = "RoleID";
+            cmbRole.SelectedItem = null;
         }
 
         private void ChangeColHeader()
@@ -167,7 +171,8 @@ namespace GUI
                         if (AccountDAO.Instance.DeleteAccount(dtgvAccount.CurrentRow.Cells["UserID"].Value.ToString()) != null)
                         {
                             LoadListAccount();
-                            messInformation.Show("Delete Successful");
+                            string message = "Delete Successful";
+                            MessageBox.Show(message, "Information", MessageBoxButtons.OK);
                         }
                     }
                 }
@@ -208,47 +213,98 @@ namespace GUI
             cmbEnable.Enabled = false;
         }
 
+		public static string MD5Hash(string input)
+		{
+			StringBuilder hash = new StringBuilder();
+			MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+			byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
+
+			for (int i = 0; i < bytes.Length; i++)
+			{
+				hash.Append(bytes[i].ToString("x2"));
+			}
+			return hash.ToString();
+		}
+        public byte[] ImageToByteArray(Image image)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                return ms.ToArray();
+            }
+        }
+
         private void btnOK_Click(object sender, EventArgs e)
         {
             try
             {
                 if (InsertOrUpdate)
                 {
-                    DialogResult result =  messQuestion.Show("Do you want to insert?");
+                    DialogResult result = MessageBox.Show("Do you want to insert?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        if (AccountDAO.Instance.InsertAccount(txtUserID.Text.ToString(), txtUsername.Text.ToString(), txtPassword.Text.ToString(), cmbRole.SelectedValue.ToString(), txtEmail.Text.ToString(), cmbEnable.SelectedItem.ToString()) != null)
+                        if (AccountDAO.Instance.InsertAccount(txtUserID.Text, txtUsername.Text, MD5Hash(txtPassword.Text), cmbRole.SelectedValue.ToString(), txtEmail.Text, cmbEnable.SelectedItem.ToString()) != null)
                         {
+                            string staffID;
+                            string userID = txtUserID.Text;
+
+                            // Lấy ba chữ số cuối cùng của userID
+                            string lastThreeDigits = userID.Substring(userID.Length - 3);
+                            staffID = "STF" + lastThreeDigits;
+
+                            StaffDTO staffDTO = new StaffDTO
+                            {
+                                IdStaff = staffID,
+                                UserId = userID,
+                                FirstName = "",
+                                LastName = "",
+                                Year = DateTime.Now.Year,
+                                Gender = "",
+                                Phone = "",
+                                Address = "",
+                                Salary = 0,
+                                Image = ImageToByteArray(Resources.about_black_n6)
+                            };
+
+                            StaffDAO staffDAO = new StaffDAO();
+                            staffDAO.Insert(staffDTO);
+
                             DefaultDisplay();
-                            messInformation.Show("Insert Successful");
+                            MessageBox.Show("Insert Successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
                 else
                 {
-                    DialogResult result = messQuestion.Show("Do you want to update?");
+                    DialogResult result = MessageBox.Show("Do you want to update?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        if (AccountDAO.Instance.UpdateAccount(txtUserID.Text.ToString(), txtUsername.Text.ToString(), txtPassword.Text.ToString(), cmbRole.SelectedValue.ToString(), txtEmail.Text.ToString(), cmbEnable.SelectedItem.ToString()) != null)
+                        if (AccountDAO.Instance.UpdateAccount(txtUserID.Text, txtUsername.Text, txtPassword.Text, cmbRole.SelectedValue.ToString(), txtEmail.Text, cmbEnable.SelectedItem.ToString()) != null)
                         {
                             DefaultDisplay();
-                            messInformation.Show("Update Successful");
+                            MessageBox.Show("Update Successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 if (InsertOrUpdate)
                 {
-                    messError.Show("Insert Failed");
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Insert Failed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    messError.Show("Update Failed");
+                    MessageBox.Show("Update Failed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
+
+ 
+
+
+
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -263,5 +319,12 @@ namespace GUI
         {
             Application.Exit();
         }
+
+		private void cmbRole_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+
+
     }
 }

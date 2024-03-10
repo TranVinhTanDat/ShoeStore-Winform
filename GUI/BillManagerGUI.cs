@@ -149,8 +149,6 @@ namespace GUI
             DataTable a = billBUS.ChooseBillDetail(dtgv.Rows[e.RowIndex].Cells["BillID"].Value.ToString());
             p.dtgv.DataSource = a;
             p.ShowDialog();
-
-
         }
 
         private void searchBill_TextChanged(object sender, EventArgs e)

@@ -120,7 +120,7 @@ namespace GUI
             //    MessageBox.Show("Ban da nhap sai dinh dang so trong truong Year hoac Salary");
             //    return;
             //}
-
+          
             staffDTO = new StaffDTO(txtID.Text.ToString(),
                 txtFirstName.Text.ToString(),
                 txtLastName.Text.ToString(),

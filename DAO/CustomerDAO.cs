@@ -66,7 +66,6 @@ namespace DAO
             cmd.Parameters.Add("@address", MySqlDbType.VarString).Value = cus.Address1;
             int kq = cmd.ExecuteNonQuery();
             return kq > 0;
-
         }
 
         public bool UpdateCus(CustomerDTO cus)

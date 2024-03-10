@@ -56,7 +56,6 @@
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lbTitle2 = new System.Windows.Forms.Label();
             this.messInformation = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.messError = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.messQuestion = new Guna.UI2.WinForms.Guna2MessageDialog();
@@ -180,6 +179,7 @@
             this.btnLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnLogin.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Location = new System.Drawing.Point(235, 419);
@@ -240,12 +240,12 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(99)))), ((int)(((byte)(255)))));
-            this.label4.Location = new System.Drawing.Point(95, 25);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label4.Location = new System.Drawing.Point(188, 28);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(277, 34);
+            this.label4.Size = new System.Drawing.Size(87, 34);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Login your account";
+            this.label4.Text = "Login";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // guna2DragControl1
@@ -262,7 +262,7 @@
             this.guna2Panel1.Controls.Add(this.picImage);
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Controls.Add(this.label3);
-            this.guna2Panel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(99)))), ((int)(((byte)(255)))));
+            this.guna2Panel1.FillColor = System.Drawing.Color.DarkOrange;
             this.guna2Panel1.Location = new System.Drawing.Point(-2, -2);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(622, 695);
@@ -369,7 +369,7 @@
             // lbTitle
             // 
             this.lbTitle.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(99)))), ((int)(((byte)(255)))));
+            this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lbTitle.Location = new System.Drawing.Point(626, 6);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(389, 44);
@@ -403,16 +403,6 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
-            // 
-            // lbTitle2
-            // 
-            this.lbTitle2.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(99)))), ((int)(((byte)(255)))));
-            this.lbTitle2.Location = new System.Drawing.Point(626, 50);
-            this.lbTitle2.Name = "lbTitle2";
-            this.lbTitle2.Size = new System.Drawing.Size(389, 41);
-            this.lbTitle2.TabIndex = 25;
-            this.lbTitle2.Text = "Good Morning";
             // 
             // messInformation
             // 
@@ -468,7 +458,6 @@
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lbTitle);
-            this.Controls.Add(this.lbTitle2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoginGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -511,7 +500,6 @@
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label lbTitle2;
         public Guna.UI2.WinForms.Guna2MessageDialog messInformation;
         public Guna.UI2.WinForms.Guna2MessageDialog messError;
         public Guna.UI2.WinForms.Guna2MessageDialog messQuestion;

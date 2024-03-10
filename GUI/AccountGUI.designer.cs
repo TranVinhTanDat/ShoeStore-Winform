@@ -70,7 +70,7 @@
             this.pnlList.Controls.Add(this.txtSearch);
             this.pnlList.Controls.Add(this.lblListAcc);
             this.pnlList.Controls.Add(this.dtgvAccount);
-            this.pnlList.Location = new System.Drawing.Point(15, 405);
+            this.pnlList.Location = new System.Drawing.Point(15, 391);
             this.pnlList.Name = "pnlList";
             this.pnlList.Size = new System.Drawing.Size(1270, 400);
             this.pnlList.TabIndex = 0;
@@ -206,7 +206,7 @@
             this.pnlInfo.Controls.Add(this.guna2CirclePictureBox1);
             this.pnlInfo.Location = new System.Drawing.Point(15, 15);
             this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(1270, 375);
+            this.pnlInfo.Size = new System.Drawing.Size(1270, 358);
             this.pnlInfo.TabIndex = 1;
             // 
             // cmbEnable
@@ -310,6 +310,7 @@
             this.cmbRole.Name = "cmbRole";
             this.cmbRole.Size = new System.Drawing.Size(200, 36);
             this.cmbRole.TabIndex = 14;
+            this.cmbRole.SelectedIndexChanged += new System.EventHandler(this.cmbRole_SelectedIndexChanged);
             // 
             // guna2HtmlLabel6
             // 
@@ -495,7 +496,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
-            this.ClientSize = new System.Drawing.Size(1300, 820);
+            this.ClientSize = new System.Drawing.Size(1300, 810);
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.pnlList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

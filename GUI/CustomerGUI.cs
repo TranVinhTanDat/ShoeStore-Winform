@@ -101,38 +101,24 @@ namespace GUI
             cus.PhoneNumber1 = txtPhone_item.Text;
             cus.Address1 = txtAddress_item.Text;
 
-            if (radMan.Checked == true)
-            {
-                cus.Gender1 = "Male";
-            }
-            else
-            {
-                cus.Gender1 = "Female";
-            }
+            cus.Gender1 = radMan.Checked ? "Male" : "Female";
 
             CustomerBUS cusbus = new CustomerBUS();
             string kq = cusbus.AddCus(cus.CustomerID1, cus.CustomerSurname1, cus.CustomerName1, cus.Gender1, cus.PhoneNumber1, cus.Address1);
+
             if (kq == "success")
             {
                 ShowListCUS();
                 MessageBox.Show("Add thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Clear();
             }
-            if (kq == "saidinhdang")
-            {
-                MessageBox.Show("Sai định dạng mã", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (kq == "error_CusId_isNull" || kq == "error_surname" || kq == "error_Cusname" || kq == "error_Address" || kq == "error_Phonenull")
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (kq == "error_phone")
-            {
-                MessageBox.Show("Sai định dạng số điện thoại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (kq == "error_CusId")
+            else if (kq == "error_CusId_Exists")
             {
                 MessageBox.Show("ID đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -153,39 +139,21 @@ namespace GUI
             cus.CustomerName1 = txtName_item.Text;
             cus.PhoneNumber1 = txtPhone_item.Text;
             cus.Address1 = txtAddress_item.Text;
-
-            if (radMan.Checked == true)
-            {
-                cus.Gender1 = "Male";
-            }
-            else
-            {
-                cus.Gender1 = "Female";
-            }
+            cus.Gender1 = radMan.Checked ? "Male" : "Female";
 
             CustomerBUS cusbus = new CustomerBUS();
             string kq = cusbus.UpdateCus(cus.CustomerID1, cus.CustomerSurname1, cus.CustomerName1, cus.Gender1, cus.PhoneNumber1, cus.Address1);
+
             if (kq == "success")
             {
                 ShowListCUS();
                 MessageBox.Show("Update thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Clear();
             }
-            if (kq == "saidinhdang")
+            else
             {
-                MessageBox.Show("Sai định dạng mã", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (kq == "error_CusId_isNull" || kq == "error_surname" || kq == "error_Cusname" || kq == "error_Address" || kq == "error_Phonenull")
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (kq == "error_phone")
-            {
-                MessageBox.Show("Sai định dạng số điện thoại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (kq == "error_CusId")
-            {
-                MessageBox.Show("ID không tồn tại trong danh sách", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // Xử lý lỗi chung nếu cần
+                MessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -194,36 +162,18 @@ namespace GUI
         private void btnDelete_Click(object sender, EventArgs e)
         {
             CustomerBUS cusBus = new CustomerBUS();
-            if (txtID_item.Text == "")
-            {
-                MessageBox.Show("ID không được để trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                DialogResult rt = MessageBox.Show("Bạn có chắc muốn xóa dữ liệu này không ???", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (rt == DialogResult.Yes)
+            DialogResult rt = MessageBox.Show("Bạn có chắc muốn xóa dữ liệu này không ???", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (rt == DialogResult.Yes)
                 {
                     string kq = cusBus.DeleteCus(txtID_item.Text);
 
-
-
-
-                    if (kq == "error_CusID")
-                    {
-                        MessageBox.Show("ID không tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
                     if (kq == "success")
                     {
                         ShowListCUS();
                         MessageBox.Show("Delete thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                     }
-                }
-
             }
-
-
-
             if (listView1.Items.Count == 0)
             {
                 MessageBox.Show("Danh sách đang trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);

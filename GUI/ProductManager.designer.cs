@@ -498,12 +498,15 @@
             this.cbxSize.ItemHighLightColor = System.Drawing.Color.DodgerBlue;
             this.cbxSize.ItemHighLightForeColor = System.Drawing.Color.White;
             this.cbxSize.Items.AddRange(new object[] {
-            "28",
-            "29",
-            "30",
-            "31",
-            "32",
-            "33"});
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44"});
             this.cbxSize.ItemTopMargin = 3;
             this.cbxSize.Location = new System.Drawing.Point(413, 137);
             this.cbxSize.Name = "cbxSize";
@@ -512,6 +515,7 @@
             this.cbxSize.Text = null;
             this.cbxSize.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             this.cbxSize.TextLeftMargin = 5;
+            this.cbxSize.SelectedIndexChanged += new System.EventHandler(this.cbxSize_SelectedIndexChanged);
             // 
             // label8
             // 

@@ -3,6 +3,7 @@ using ComponentFactory.Krypton.Toolkit;
 using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 
 namespace GUI
@@ -15,6 +16,7 @@ namespace GUI
         private ImportDetailBUS importDetailBUS = new ImportDetailBUS();
         private List<ImportDTO> importDTOs = new List<ImportDTO>();
         private List<ImportDetailDTO> importDetailDTOs = new List<ImportDetailDTO>();
+        private ProductBUS productBUS = new ProductBUS();
         public string supplierID;
         public string staffID;
         public CreateImport()
@@ -166,7 +168,6 @@ namespace GUI
 
             foreach (DataGridViewRow row in dtgv.Rows)
             {
-
                 importDetailDTOs.Add(new ImportDetailDTO(importOrder,
                     row.Cells["ProductID"].Value.ToString(),
                     int.Parse(row.Cells["Quantity"].Value.ToString()),
@@ -181,6 +182,9 @@ namespace GUI
                 if (importDetailBUS.Insert(importDetail.ImportID, importDetail.ProductID, importDetail.Quantity, importDetail.UnitPrice))
                 {
                     flag = true;
+                    // Assuming productBUS.UpdateQuantity function signature is like:
+                    // productBUS.UpdateQuantity(string productID, int quantity)
+                    productBUS.UpdateQuantity(importDetail.ProductID, importDetail.Quantity);
                 }
                 else
                 {
@@ -192,8 +196,9 @@ namespace GUI
             {
                 MessageBox.Show("Da them phieu nhap!");
             }
-
         }
+
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             lbDateTime.Text = DateTime.Now.ToString("ddd, MMM dd, yyyy, h:mm:ss tt");
@@ -202,6 +207,11 @@ namespace GUI
         private void bunifuPanel6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

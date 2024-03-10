@@ -18,7 +18,7 @@ namespace GUI
         private List<BillDTO> billDTOs = new List<BillDTO>();
         private List<BillDetailDTO> billDetailDTOs = new List<BillDetailDTO>();
         private ProductDAO productDAO= new ProductDAO();
-
+        private int quantityInStock;
         public string customerID;
         public string staffID;
 
@@ -54,29 +54,25 @@ namespace GUI
         {
             if (dtgv.CurrentCell.ColumnIndex == 2)
             {
-                if (dtgv.Rows[e.RowIndex].Cells[2].Value.ToString() != "")
+                if (!System.Text.RegularExpressions.Regex.IsMatch(dtgv.Rows[e.RowIndex].Cells[2].Value.ToString(), @"^[0-9]*(?:\.[0-9]*)?$"))
                 {
-                    if (System.Text.RegularExpressions.Regex.IsMatch(dtgv.Rows[e.RowIndex].Cells[2].Value.ToString(), @"^[0-9]*(?:\.[0-9]*)?$"))
-                    {
-                        MessageBox.Show("Gia tri nhap khong hop le");
-                        dtgv.Rows[e.RowIndex].Cells[2].Value = "1"; // Fix
-                    }
-                    else if (int.Parse(dtgv.Rows[e.RowIndex].Cells[2].Value.ToString()) > int.Parse(dtgv.Rows[e.RowIndex].Cells[3].Value.ToString()))
-                    {
-                        MessageBox.Show("So luong ban nhap nhieu hon san pham trong kho");  // Fix
-                        dtgv.Rows[e.RowIndex].Cells[2].Value = "1"; // Fix
-                    }
-                    //dtgv.Rows[e.RowIndex].Cells[2].Value = 1;
+                    MessageBox.Show("Gia tri nhap khong hop le");
+                    dtgv.Rows[e.RowIndex].Cells[2].Value = "1"; // Fix
+                }
+                else if (int.Parse(dtgv.Rows[e.RowIndex].Cells["Quantity"].Value.ToString()) > int.Parse(dtgv.Rows[e.RowIndex].Cells["Inventory"].Value.ToString()))
+                {
+                    MessageBox.Show("So luong ban nhap nhieu hon san pham trong kho");  // Fix
+                    dtgv.Rows[e.RowIndex].Cells[2].Value = "1"; // Fix
                 }
             }
-
+            quantityInStock = int.Parse(dtgv.Rows[e.RowIndex].Cells["Inventory"].Value.ToString());
             foreach (DataGridViewRow row in dtgv.Rows)
             {
                 row.Cells["Total"].Value = Convert.ToInt32(row.Cells["Quantity"].Value) *
                     Convert.ToDouble(row.Cells["Price"].Value);
             }
-
         }
+
 
         private void dtgv_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -124,51 +120,60 @@ namespace GUI
             lbDateTime.Text = DateTime.Now.ToString("ddd, MMM dd, yyyy, h:mm:ss tt");
         }
 
+
         private void btnSaveSale_Click(object sender, EventArgs e)
         {
-            // Fix
-            if (!(customerID != null))
+            if (string.IsNullOrEmpty(customerID))
             {
-                MessageBox.Show("Ban chua chon khach hang de nhap");
+                MessageBox.Show("Bạn chưa chọn khách hàng để nhập");
                 return;
             }
 
-            // Fix
-            if (!(staffID != null))
+            if (string.IsNullOrEmpty(staffID))
             {
-                MessageBox.Show("Ban chua chon nhan vien xuat hoa don");
+                MessageBox.Show("Bạn chưa chọn nhân viên xuất hóa đơn");
                 return;
             }
 
-            // Fix
             if (cbxPayment.SelectedIndex == -1)
             {
-                MessageBox.Show("Ban chua chon phuong thuc thanh toan");
+                MessageBox.Show("Bạn chưa chọn phương thức thanh toán");
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(txtDeliver.Text))
+            {
+                MessageBox.Show("Bạn chưa nhập địa chỉ.");
+                return;
+            }
+            
             bool flag = false;
             string billOrder = billBUS.getIDBill();
 
             billDTO.BillID = billOrder;
             billDTO.CustomerID = customerID;
             billDTO.StaffID = staffID;
-            billDTO.Total = double.Parse(lbTotal.Text.ToString());
+            billDTO.Total = double.Parse(lbTotal.Text);
 
             foreach (DataGridViewRow row in dtgv.Rows)
             {
+                var productID = row.Cells["IDProduct"].Value.ToString();
+                var quantity = int.Parse(row.Cells["Quantity"].Value.ToString());
+                var price = double.Parse(row.Cells["Price"].Value.ToString());
+                var inventory = int.Parse(row.Cells["Inventory"].Value.ToString());
+                if(quantity > inventory)
+                {
+                    MessageBox.Show("Không đủ số lượng sản phẩm.");
+                    return;
+                }
+                billDetailDTOs.Add(new BillDetailDTO(billOrder, productID, quantity, price));
 
-                billDetailDTOs.Add(new BillDetailDTO(billOrder,
-                    row.Cells["IDProduct"].Value.ToString(),
-                    int.Parse(row.Cells["Quantity"].Value.ToString()),
-                    double.Parse(row.Cells["Price"].Value.ToString())
-                ));
-
-                productDAO.UpdateQuantity(row.Cells["IDProduct"].Value.ToString(),
-                    int.Parse(row.Cells["Inventory"].Value.ToString()) - int.Parse(row.Cells["Quantity"].Value.ToString())
-                    );
+                // Cập nhật số lượng sản phẩm
+                
+                productDAO.UpdateQuantityBuy(productID, quantity);
             }
 
+            // Thực hiện việc thêm hóa đơn và chi tiết hóa đơn
             billBUS.Insert(billDTO.BillID, billDTO.CustomerID, billDTO.StaffID, billDTO.Total);
 
             foreach (BillDetailDTO billDetail in billDetailDTOs)
@@ -179,16 +184,21 @@ namespace GUI
                 }
                 else
                 {
-                    MessageBox.Show("Xu ly hoa don truoc");
+                    MessageBox.Show("Xử lý hóa đơn trước");
                 }
             }
 
             if (flag)
             {
-                MessageBox.Show("Da them hoa don!");
+                MessageBox.Show("Đã thêm hóa đơn!");
+                loadData();
             }
+        }
+        private void loadData()
+        {
 
         }
+
 
         private void printInvoice_Click(object sender, EventArgs e)
         {
@@ -259,6 +269,11 @@ namespace GUI
             {
                 shippingCost.Text = "0";
             }
+        }
+
+        private void printPreviewDialog1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -35,9 +35,6 @@ namespace GUI
         {
             btnLine.Width = 0;
             OpenChildForm(new Dashboard());
-
-            
-            
         }
 
         private void OpenChildForm(Form childForm)
@@ -61,13 +58,13 @@ namespace GUI
 
             if (IntListImg == 0)
             {
-                PicBoxQC.BackgroundImage = Image.FromFile(@"..\..\img\qc1.jpg");
+                //PicBoxQC.BackgroundImage = Image.FromFile(@"..\..\img\qc1.jpg");
                 PicBoxQC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
                 IntListImg = 1;
             }
             else
             {
-                PicBoxQC.BackgroundImage = Image.FromFile(@"..\..\img\qc2.jpg");
+                //PicBoxQC.BackgroundImage = Image.FromFile(@"..\..\img\qc2.jpg");
                 PicBoxQC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
                 IntListImg = 0;
             }

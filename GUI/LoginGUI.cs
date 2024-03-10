@@ -156,7 +156,7 @@ namespace GUI
 
         private void btnShow_MouseDown(object sender, MouseEventArgs e)
         {
-            btnShow.BackgroundImage = Image.FromFile(@"..\..\img\icons8-hide-48.png");
+            btnShow.BackgroundImage = Image.FromFile(@"C:\Users\Admin\Downloads\C# Project\ShoeStoreManager\GUI\Resources\icons8-hide-48.png");
             btnShow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             txtPassword.UseSystemPasswordChar = false;
 
@@ -164,7 +164,7 @@ namespace GUI
 
         private void btnShow_MouseUp(object sender, MouseEventArgs e)
         {
-            btnShow.BackgroundImage = Image.FromFile(@"..\..\img\icons8-eye-48.png");
+            btnShow.BackgroundImage = Image.FromFile(@"C:\Users\Admin\Downloads\C# Project\ShoeStoreManager\GUI\Resources\icons8-eye-48.png");
             btnShow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             txtPassword.UseSystemPasswordChar = true;
 
@@ -212,18 +212,18 @@ namespace GUI
             lbTimer.Text = DateTime.Now.ToString("HH");
 
             int time = int.Parse(lbTimer.Text);
-            if (4 <= time && time < 11)
-            {
-                lbTitle2.Text = "Good Morning";
-            }
-            if (time >= 11 && time < 18)
-            {
-                lbTitle2.Text = "Good Afternoon";
-            }
-            if (time >= 18 && time < 23)
-            {
-                lbTitle2.Text = "Good Evening";
-            }
+            //if (4 <= time && time < 11)
+            //{
+            //    lbTitle2.Text = "Good Morning";
+            //}
+            //if (time >= 11 && time < 18)
+            //{
+            //    lbTitle2.Text = "Good Afternoon";
+            //}
+            //if (time >= 18 && time < 23)
+            //{
+            //    lbTitle2.Text = "Good Evening";
+            //}
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

@@ -24,18 +24,18 @@ namespace DAO
             set { _instance = value; }
         }
 
-   
+
         public List<StaffDTO> GetAll()
         {
             DataTable _dt = new DataTable();
 
-            string query = "select * from Staff";
+            string query = "SELECT * FROM Staff";
 
             _dt = DataProvider.Instance.ExecuteQuery(query);
 
             List<StaffDTO> list = new List<StaffDTO>();
 
-            foreach(DataRow dr in _dt.Rows)
+            foreach (DataRow dr in _dt.Rows)
             {
                 list.Add(new StaffDTO(dr));
             }
@@ -45,15 +45,13 @@ namespace DAO
 
         public bool Insert(StaffDTO staffDTO)
         {
-
-
             Moketnoi();
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "insert into Staff(StaffID, UserID, FirstName, LastName, YearOfBirth, Gender, Phone, Address, Salary, Img) Values(@idStaff,@userId,@firstName,@lastName,@year,@gender,@phone,@address,@salary,@img)";
             cmd.Connection = conn;
             cmd.Parameters.Add("@idStaff", MySqlDbType.VarString).Value = staffDTO.IdStaff;
-            cmd.Parameters.Add("@userId", MySqlDbType.VarString).Value = "1";  //staffDTO.UserId;
+            cmd.Parameters.Add("@userId", MySqlDbType.VarString).Value = staffDTO.UserId;  
             cmd.Parameters.Add("@firstName", MySqlDbType.VarString).Value = staffDTO.FirstName;
             cmd.Parameters.Add("@lastName", MySqlDbType.VarString).Value = staffDTO.LastName;
             cmd.Parameters.Add("@year", MySqlDbType.Int64).Value = staffDTO.Year;
@@ -63,24 +61,7 @@ namespace DAO
             cmd.Parameters.Add("@salary", MySqlDbType.VarString).Value = staffDTO.Salary;
             cmd.Parameters.Add("@img", MySqlDbType.Blob).Value = staffDTO.Image;
             int kq = cmd.ExecuteNonQuery();
-
-
             return kq > 0;
-            
-            
-            //string query = string.Format("insert into Staff(StaffID, UserID, FirstName, LastName, YearOfBirth, Gender, Phone, Address, Salary, Img) values('{0}', '{9}', '{1}', '{2}', {3}, '{4}', '{5}', '{6}', {7}, '{8}')", staffDTO.IdStaff, staffDTO.FirstName, staffDTO.LastName, staffDTO.Year, staffDTO.Gender, staffDTO.Phone, staffDTO.Address, staffDTO.Salary, staffDTO.Image, staffDTO.UserId);
-
-            //int result = DataProvider.Instance.ExecuteNonQuery(query);
-
-            //try
-            //{
-            //    if (result > 0) return true;
-            //    return false;
-            //}
-            //catch (Exception)
-            //{
-            //    return false;
-            //}
         }
 
 
@@ -89,10 +70,9 @@ namespace DAO
             Moketnoi();
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "update Staff set UserID = @userId, FirstName = @firstName, LastName = @lastName, YearOfBirth = @year, Gender = @gender, Phone = @phone, Address = @address, Salary = @salary, Img = @img where StaffID = @idStaff";
+            cmd.CommandText = "update Staff set  FirstName = @firstName, LastName = @lastName, YearOfBirth = @year, Gender = @gender, Phone = @phone, Address = @address, Salary = @salary, Img = @img where StaffID = @idStaff";
             cmd.Connection = conn;
             cmd.Parameters.Add("@idStaff", MySqlDbType.VarString).Value = staffDTO.IdStaff;
-            cmd.Parameters.Add("@userId", MySqlDbType.VarString).Value = "1";  //staffDTO.UserId;
             cmd.Parameters.Add("@firstName", MySqlDbType.VarString).Value = staffDTO.FirstName;
             cmd.Parameters.Add("@lastName", MySqlDbType.VarString).Value = staffDTO.LastName;
             cmd.Parameters.Add("@year", MySqlDbType.Int64).Value = staffDTO.Year;

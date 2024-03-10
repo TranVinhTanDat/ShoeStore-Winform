@@ -34,10 +34,10 @@ namespace GUI
             {
 
             // Dashboard Selling 1
-            quantity1ProductSelling.Text = dashboardDTOs[i].Sale.ToString();
-            picture1Dashboard.Image = byteArrayToImage(dashboardDTOs[i].Img);
-            textNameDashboard.Text = dashboardDTOs[i].NameProduct.ToString();
-            textDesDashboard.Text = dashboardDTOs[i].DescriptionProduct.ToString();
+            //quantity1ProductSelling.Text = dashboardDTOs[i].Sale.ToString();
+            //picture1Dashboard.Image = byteArrayToImage(dashboardDTOs[i].Img);
+            //textNameDashboard.Text = dashboardDTOs[i].NameProduct.ToString();
+            //textDesDashboard.Text = dashboardDTOs[i].DescriptionProduct.ToString();
 
             }
             //// Dashboard Selling 2

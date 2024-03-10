@@ -8,3 +8,45 @@ C:\Users\hddev\Desktop\IT\ShoeStoreManager\DTO\obj\Debug\DTO.csproj.GenerateReso
 C:\Users\hddev\Desktop\IT\ShoeStoreManager\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 C:\Users\hddev\Desktop\IT\ShoeStoreManager\DTO\obj\Debug\DTO.exe
 C:\Users\hddev\Desktop\IT\ShoeStoreManager\DTO\obj\Debug\DTO.pdb
+C:\Users\Admin\Downloads\C# Project\ShoeStoreManager\DTO\bin\Debug\DTO.exe.config
+C:\Users\Admin\Downloads\C# Project\ShoeStoreManager\DTO\bin\Debug\DTO.exe
+C:\Users\Admin\Downloads\C# Project\ShoeStoreManager\DTO\bin\Debug\DTO.pdb
+C:\Users\Admin\Downloads\C# Project\ShoeStoreManager\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
+C:\Users\Admin\Downloads\C# Project\ShoeStoreManager\DTO\obj\Debug\DTO.Properties.Resources.resources
+C:\Users\Admin\Downloads\C# Project\ShoeStoreManager\DTO\obj\Debug\DTO.csproj.GenerateResource.cache
+C:\Users\Admin\Downloads\C# Project\ShoeStoreManager\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Downloads\C# Project\ShoeStoreManager\DTO\obj\Debug\DTO.exe
+C:\Users\Admin\Downloads\C# Project\ShoeStoreManager\DTO\obj\Debug\DTO.pdb
+C:\Users\minht\Downloads\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\bin\Debug\DTO.exe.config
+C:\Users\minht\Downloads\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\bin\Debug\DTO.exe
+C:\Users\minht\Downloads\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\bin\Debug\DTO.pdb
+C:\Users\minht\Downloads\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
+C:\Users\minht\Downloads\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\obj\Debug\DTO.Properties.Resources.resources
+C:\Users\minht\Downloads\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\obj\Debug\DTO.csproj.GenerateResource.cache
+C:\Users\minht\Downloads\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\minht\Downloads\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\obj\Debug\DTO.exe
+C:\Users\minht\Downloads\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\obj\Debug\DTO.pdb
+C:\Users\minht\Downloads\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\bin\Debug\Guna.UI2.dll
+C:\Users\minht\Downloads\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\obj\Debug\DTO.csproj.CopyComplete
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\bin\Debug\DTO.exe.config
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\bin\Debug\DTO.exe
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\bin\Debug\DTO.pdb
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\bin\Debug\Guna.UI2.dll
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\obj\Debug\DTO.Properties.Resources.resources
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\obj\Debug\DTO.csproj.GenerateResource.cache
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\obj\Debug\DTO.csproj.CopyComplete
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\obj\Debug\DTO.exe
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\ShoeStoreManager\DTO\obj\Debug\DTO.pdb
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\Backup3\ShoeStoreManager\DTO\bin\Debug\DTO.exe.config
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\Backup3\ShoeStoreManager\DTO\bin\Debug\DTO.exe
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\Backup3\ShoeStoreManager\DTO\bin\Debug\DTO.pdb
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\Backup3\ShoeStoreManager\DTO\bin\Debug\Guna.UI2.dll
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\Backup3\ShoeStoreManager\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\Backup3\ShoeStoreManager\DTO\obj\Debug\DTO.Properties.Resources.resources
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\Backup3\ShoeStoreManager\DTO\obj\Debug\DTO.csproj.GenerateResource.cache
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\Backup3\ShoeStoreManager\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\Backup3\ShoeStoreManager\DTO\obj\Debug\DTO.csproj.CopyComplete
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\Backup3\ShoeStoreManager\DTO\obj\Debug\DTO.exe
+C:\Users\Admin\Downloads\CSharpProject\ShoeStoreManager\ShoeStoreManagerHoanChinh\Backup3\ShoeStoreManager\DTO\obj\Debug\DTO.pdb

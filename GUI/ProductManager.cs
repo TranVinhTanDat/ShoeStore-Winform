@@ -2,8 +2,10 @@
 using ComponentFactory.Krypton.Toolkit;
 using DTO;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GUI
@@ -43,6 +45,7 @@ namespace GUI
         public void LoadDtgv()
         {
             _product.dtgv.DataSource = productBUS.GetList();
+
         }
 
         public void AddBinding()
@@ -74,7 +77,54 @@ namespace GUI
 
         private void btnCreateStaff_Click(object sender, EventArgs e)
         {
+            if (pictureAvatar.Image == null)
+            {
+                MessageBox.Show("Vui lòng chọn ảnh đại diện.");
+                return;
+            }
 
+            if (string.IsNullOrEmpty(txtNameProduct.Text))
+            {
+                MessageBox.Show("Vui lòng nhập tên sản phẩm.");
+                return;
+            }
+
+            if (cbxSize.SelectedItem == null)
+            {
+                MessageBox.Show("Vui lòng chọn size.");
+                return; 
+            }
+
+            if (cbxColor.SelectedItem == null)
+            {
+                MessageBox.Show("Vui lòng chọn màu.");
+                return; 
+            }
+
+            if (string.IsNullOrEmpty(txtDescription.Text))
+            {
+                MessageBox.Show("Vui lòng nhập mô tả.");
+                return; 
+            }
+
+            
+            if (!int.TryParse(txtAmount.Text, out _))
+            {
+                MessageBox.Show("Vui lòng nhập số lượng là một số nguyên.");
+                return; 
+            }
+
+            if (!double.TryParse(txtPrice.Text, out _))
+            {
+                MessageBox.Show("Vui lòng nhập giá là một số thực.");
+                return;
+            }
+
+            if (cbxCategory.SelectedItem == null || cbxProducer.SelectedItem == null)
+            {
+                MessageBox.Show("Vui lòng chọn danh mục và nhà sản xuất.");
+                return;
+            }
             MemoryStream ms = new MemoryStream();
             pictureAvatar.Image.Save(ms, pictureAvatar.Image.RawFormat);
             byte[] img = ms.ToArray();
@@ -102,12 +152,60 @@ namespace GUI
             }
             else
             {
-                MessageBox.Show("Xu ly hoa don truoc");
+                MessageBox.Show("Them that bai");
             }
         }
 
         private void btnUpdateProduct_Click(object sender, EventArgs e)
         {
+            if (pictureAvatar.Image == null)
+            {
+                MessageBox.Show("Vui lòng chọn ảnh đại diện.");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtNameProduct.Text))
+            {
+                MessageBox.Show("Vui lòng nhập tên sản phẩm.");
+                return;
+            }
+
+            if (cbxSize.SelectedItem == null)
+            {
+                MessageBox.Show("Vui lòng chọn size.");
+                return;
+            }
+
+            if (cbxColor.SelectedItem == null)
+            {
+                MessageBox.Show("Vui lòng chọn màu.");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtDescription.Text))
+            {
+                MessageBox.Show("Vui lòng nhập mô tả.");
+                return;
+            }
+
+
+            if (!int.TryParse(txtAmount.Text, out _))
+            {
+                MessageBox.Show("Vui lòng nhập số lượng là một số nguyên.");
+                return;
+            }
+
+            if (!double.TryParse(txtPrice.Text, out _))
+            {
+                MessageBox.Show("Vui lòng nhập giá là một số thực.");
+                return;
+            }
+
+            if (cbxCategory.SelectedItem == null || cbxProducer.SelectedItem == null)
+            {
+                MessageBox.Show("Vui lòng chọn danh mục và nhà sản xuất.");
+                return;
+            }
             MemoryStream ms = new MemoryStream();
             pictureAvatar.Image.Save(ms, pictureAvatar.Image.RawFormat);
             byte[] img = ms.ToArray();
@@ -149,6 +247,7 @@ namespace GUI
             cbxProducer.DataSource = productBUS.getProducer();
             cbxProducer.DisplayMember = "ProducerName";
             cbxProducer.ValueMember = "ProducerID";
+            
 
             if (_bds != null)
             {
@@ -170,6 +269,11 @@ namespace GUI
                 fileName = openPicture.FileName;
             }
             openPicture.Dispose();
+        }
+
+        private void cbxSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

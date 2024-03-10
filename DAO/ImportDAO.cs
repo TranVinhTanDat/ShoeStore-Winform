@@ -1,4 +1,5 @@
-﻿using DTO;
+﻿// ImportDAO
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -34,25 +35,49 @@ namespace DAO
             return list;
         }
 
-        public DataTable Insert(string importID, string supplierID, string staffID, double total)
+        public bool Insert(string importID, string supplierID, string staffID, double total)
         {
-            string query = string.Format("insert into import (ImportID, SupplierID, StaffID, Total) values ('{0}', '{1}', '{2}', {3})", importID, supplierID, staffID, total);
-            DataTable a = new DataTable();
-            a = DataProvider.Instance.ExecuteQuery(query);
-            return a;
-
-            /*try
+            if (CheckStaffExistence(staffID))
             {
-                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                string query = string.Format("INSERT INTO `import` (ImportID, SupplierID, StaffID, Total) VALUES ('{0}', '{1}', '{2}', {3})", importID, supplierID, staffID, total);
+                int rowsAffected = DataProvider.Instance.ExecuteNonQuery(query);
 
-                if (result > 0) return true;
+                return rowsAffected > 0;
+            }
+            else
+            {
                 return false;
             }
-            catch (Exception)
-            {
-                return false;
-            }*/
         }
+
+        public bool CheckStaffExistence(string staffID)
+        {
+            string checkQuery = string.Format("SELECT StaffID FROM staff WHERE StaffID = '{0}'", staffID);
+            DataTable checkResult = DataProvider.Instance.ExecuteQuery(checkQuery);
+
+            return checkResult.Rows.Count > 0;
+        }
+
+
+        // Các phương thức khác (Update, Delete, FindImport, ChooseImportDetail)...
+
+
+
+
+
+
+        //try
+        //{
+        //    int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+        //    if (result > 0) return true;
+        //    return false;
+        //}
+        //catch (Exception)
+        //{
+        //    return false;
+        //}
+        //}
 
 
         public bool Update(string importID, string supplierID, string staffID, string updatetime, double total)

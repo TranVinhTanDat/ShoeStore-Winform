@@ -56,7 +56,7 @@ namespace DAO
             Moketnoi();
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into SUPPLIER(SUPPLIERID,SUPPIERNAME,ADDRESS,PHONE,FAXNUMBER) Values(@id,@supname,@address,@phone,@faxnumber)";
+            cmd.CommandText = "insert into SUPPLIER(SUPPLIERID,SupplierName,ADDRESS,PHONE,FAXNUMBER) Values(@id,@supname,@address,@phone,@faxnumber)";
             cmd.Connection = conn;
             cmd.Parameters.Add("@id", MySqlDbType.VarString).Value = sup.SuppierID1;
             cmd.Parameters.Add("@supname", MySqlDbType.VarString).Value = sup.Suppiername1;
@@ -90,9 +90,11 @@ namespace DAO
             Moketnoi();
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select *from SUPPLIER where CONCAT(SUPPIERID,SUPPIERNAME,ADDRESS,PHONE,FAXNUMBER) like '%" + strSeach + "%'"; ;
+            cmd.CommandText = "SELECT * FROM SUPPLIER WHERE CONCAT(SUPPLIERID, SUPPLIERNAME, ADDRESS, PHONE, FAXNUMBER) LIKE @searchTerm";
+            cmd.Parameters.AddWithValue("@searchTerm", "%" + strSeach + "%");
             cmd.Connection = conn;
             MySqlDataReader reader = cmd.ExecuteReader();
+
             while (reader.Read())
             {
                 string SuppierID = reader.GetString(0);
@@ -100,7 +102,6 @@ namespace DAO
                 string Address = reader.GetString(2);
                 string PhoneNumber = reader.GetString(3);
                 string Faxnumber = reader.GetString(4);
-
 
                 SupplierDTO sup = new SupplierDTO();
                 sup.SuppierID1 = SuppierID;
@@ -110,11 +111,12 @@ namespace DAO
                 sup.FaxNumber1 = Faxnumber;
 
                 ListSuppier.Add(sup);
-
             }
+
             reader.Close();
             return ListSuppier;
         }
+
     }
 }
 
